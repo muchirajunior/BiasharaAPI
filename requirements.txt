@@ -1,0 +1,7 @@
+flask
+flask_marshmallow
+flask_sqlalchemy
+flask_bcrypt
+psycopg2-binary
+shortuuid
+flask_jwt_extended
