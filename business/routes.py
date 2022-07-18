@@ -1,5 +1,6 @@
 from flask import Blueprint,jsonify
 from flask_jwt_extended import jwt_required
+from .business import *
 
 business=Blueprint('business',__name__,url_prefix='/business')
 
