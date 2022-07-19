@@ -11,7 +11,7 @@ class Product(db.Model):
     quantity=db.Column(db.String(20))
     photo_2=db.Column(db.String)
     photo_3=db.Column(db.String)
-    businessid=db.Column(db.Integer,db.ForeignKey('business.id'),nullable=False)
+    businessid=db.Column(db.Integer,db.ForeignKey('businesses.id'),nullable=False)
     
 
     def __init__(self,name,price,description,photo,type,businessid):

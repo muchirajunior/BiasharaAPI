@@ -13,15 +13,15 @@ class Business(db.Model):
     password=db.Column(db.String(100))
     photo=db.Column(db.String(200))
     pdf_menu=db.Column(db.String(200))
-    site=db.Column(db.String(300))
+    website=db.Column(db.String(300))
     subscription=db.Column(db.Float(10),default=100)
     active=db.Column(db.Boolean,default=True)
     products_cartegories=db.Column(JSON)
     created_at=db.Column(db.DateTime,default=datetime.utcnow)
-    products=db.relationship("Product",backref='business',lazy=True)
-    orders=db.relationship("Order",backref='business',lazy=True)
+    products=db.relationship("Product",backref='businesses',lazy=True)
+    orders=db.relationship("Order",backref='businesses',lazy=True)
 
-    def __init__(self,name,username,address,cartegory,phone,password,photo,site):
+    def __init__(self,name,username,address,cartegory,phone,password,photo,website):
         self.name=name
         self.username=username
         self.address=address
@@ -29,4 +29,4 @@ class Business(db.Model):
         self.phone=phone
         self.password=password
         self.photo=photo
-        self.site=site
+        self.website=website

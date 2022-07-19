@@ -12,7 +12,7 @@ class Order(db.Model):
     contact=db.String(db.String(100))
     complete=db.Column(db.Boolean,default=False)
     created_at=db.Column(db.DateTime,default=datetime.utcnow)
-    businessid=db.Column(db.Integer,db.ForeignKey('business.id'),nullable=False)
+    businessid=db.Column(db.Integer,db.ForeignKey('businesses.id'),nullable=False)
 
     def __init__(self,product,total_price,client,address,contact,businessid):
         self.businessid=businessid
