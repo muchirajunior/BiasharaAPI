@@ -10,7 +10,6 @@ def getAllBusiness():
     return jsonify(message='all business in the records')
 
 @business.get('/<username>')
-@jwt_required()
 def getBusinessByUsername(username:str):
     
     return jsonify(message=f"business with username {username}")
