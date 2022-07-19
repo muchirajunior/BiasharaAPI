@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify,request
 
 from orders.services import createNewOrder
-from .order import *
+from .models import *
 from  schemas import *
 orders=Blueprint('orders',__name__,url_prefix='/orders')
 

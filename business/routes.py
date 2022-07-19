@@ -1,9 +1,8 @@
 from random import randint
 from flask import Blueprint,jsonify,request
 from flask_jwt_extended import jwt_required
-from .pins import Pin
-from orders.order import Order
-from products.product import Product
+from orders.models import Order
+from products.models import Product
 
 from schemas import *
 from .services import *
@@ -25,8 +24,7 @@ def getBusinessByUsername(username:str):
     business=Business.query.filter_by(username=username).first()
     if business == None:
         return jsonify(message="no such business in the records"),404
-    business=businessSchema.dump(business)
-    business:dict=business.pop("orders")
+    business=publicBusinessSchema.dump(business)
     return jsonify(business),200
 
 @business.post('/')
@@ -118,6 +116,10 @@ def forgotPassword(username):
         business=Business.query.filter((Business.username==username) | (Business.phone==str(username))).first()
         if business== None:
             return jsonify("business not found"),404
+        pin=Pin.query.filter_by(contact=business.phone).first()
+        if pin !=None:
+            db.session.delete(pin)
+            db.session.commit()
         randomPin=randint(100000,999999)
         db.session.add(Pin(business.phone,randomPin))
         db.session.commit()

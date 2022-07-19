@@ -1,5 +1,5 @@
 import json
-from .product import db,Product
+from .models import db,Product
 
 def createNewProduct(data:json):
     product:Product=Product(

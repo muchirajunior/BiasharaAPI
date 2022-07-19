@@ -1,7 +1,6 @@
-from business.business import db
-from orders.order import db
-from products.product import db
-from users.user import db
-from business.pins import db
+from business.models import db
+from orders.models import db
+from products.models import db
+from users.models import db
 
 db.create_all()

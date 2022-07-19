@@ -24,6 +24,12 @@ class BusinessSchema(ma.Schema):
 businessSchema=BusinessSchema()
 businessesSchema=BusinessSchema(many=True)
 
+class PublicBusinessSchema(ma.Schema):
+    products=ma.Nested(ProductSchema, many=True)
+    class Meta:
+         fields=('id','name','username','address','cartegory','phone','photo','pdf_menu','site','subsription','active','products_cartegories','created_at','products')
+publicBusinessSchema=PublicBusinessSchema()
+
 class UserSchema(ma.Schema):
     class Meta:
         fileds=('id','username','name')

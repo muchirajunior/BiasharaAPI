@@ -1,5 +1,5 @@
 import json
-from .order import db,Order
+from .models import db,Order
 
 def createNewOrder(data:json):
     order:Order=Order(

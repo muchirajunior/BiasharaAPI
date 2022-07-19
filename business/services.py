@@ -1,6 +1,6 @@
 import json
 from flask_jwt_extended import create_access_token
-from .business import Business,db
+from .models import *
 from . import bycrypt
 
 def createhashPassword(password:str):
