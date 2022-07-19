@@ -1,4 +1,5 @@
 import json
+from flask_jwt_extended import create_access_token
 from .business import Business,db
 from . import bycrypt
 
@@ -8,7 +9,8 @@ def createhashPassword(password:str):
     return password
 
 def checkPassword(enteredPassword, storedPassword):
-    return bycrypt.check_password_hash(str.encode(storedPassword),enteredPassword)
+    print(type(storedPassword))
+    return bycrypt.check_password_hash(storedPassword.encode("utf-8"),enteredPassword)
 
 def createNewBusiness(data:json):
     business=Business(
@@ -23,3 +25,16 @@ def createNewBusiness(data:json):
     )
 
     return business
+
+def generateJwt(business:Business):
+    user={
+        "username":business.username,
+        "name":business.name,
+        "website":business.website,
+        "address":business.address,
+        "cartegory":business.cartegory
+    }
+
+    token =create_access_token(identity=user)
+
+    return token

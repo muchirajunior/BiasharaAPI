@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///database.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['SECRET_KEY']="Hbfj@hy**^HGEERI56B3aa;7y(gertY64H55!"
 app.config["JWT_SECRET_KEY"] = "FJVDJH93623FDNJHGS537KDGN6@#$%JJ"
-app.config["JWT_ACCESS_TOKEN_EXPIRES"]=timedelta(minutes=10)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"]=timedelta(hours=10)
 
 db=SQLAlchemy(app)
 ma=Marshmallow(app)
