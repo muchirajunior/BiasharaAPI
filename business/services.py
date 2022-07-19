@@ -9,7 +9,6 @@ def createhashPassword(password:str):
     return password
 
 def checkPassword(enteredPassword, storedPassword):
-    print(type(storedPassword))
     return bycrypt.check_password_hash(storedPassword.encode("utf-8"),enteredPassword)
 
 def createNewBusiness(data:json):
@@ -38,3 +37,7 @@ def generateJwt(business:Business):
     token =create_access_token(identity=user)
 
     return token
+
+def sendMessage(contact,pin):
+
+    print(pin)
