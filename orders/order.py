@@ -9,14 +9,14 @@ class Order(db.Model):
     total_price=db.Column(db.Float)
     client=db.Column(db.String(100))
     address=db.Column(db.String(100))
-    contact=db.String(db.String(100))
+    contact=db.Column(db.String(100))
     complete=db.Column(db.Boolean,default=False)
     created_at=db.Column(db.DateTime,default=datetime.utcnow)
     businessid=db.Column(db.Integer,db.ForeignKey('businesses.id'),nullable=False)
 
-    def __init__(self,product,total_price,client,address,contact,businessid):
+    def __init__(self,products,total_price,client,address,contact,businessid):
         self.businessid=businessid
-        self.product=product
+        self.products=products
         self.total_price=total_price
         self.client=client
         self.address=address

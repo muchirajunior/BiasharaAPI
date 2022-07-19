@@ -9,7 +9,7 @@ orderSchema=OrderSchema()
 ordersSchema=OrderSchema(many=True)
 
 class ProductSchema(ma.Schema):
-    class meta:
+    class Meta:
         fields=('id','name','price','description','type','photo','quantity','photo_2','photo_3')
 
 productSchema=ProductSchema()

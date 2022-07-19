@@ -14,7 +14,7 @@ class Business(db.Model):
     photo=db.Column(db.String(200))
     pdf_menu=db.Column(db.String(200))
     website=db.Column(db.String(300))
-    subscription=db.Column(db.Float(10),default=100)
+    subscription=db.Column(db.Float,default=100)
     active=db.Column(db.Boolean,default=True)
     products_cartegories=db.Column(JSON)
     created_at=db.Column(db.DateTime,default=datetime.utcnow)
