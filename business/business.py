@@ -13,7 +13,9 @@ class Business(db.Model):
     photo=db.Column(db.String)
     site=db.Column(db.String(300))
     subscription=db.Column(db.Float(10),default=100)
-    productCartegories=db.Column(JSON)
+    product_cartegories=db.Column(JSON)
+    products=db.relationship("Product",backref='businesses',lazy=True)
+    orders=db.relationship("Order",backref='businesses',lazy=True)
 
     def __init__(self,name,username,location,cartegory,phone,password,photo,site):
         self.name=name

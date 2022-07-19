@@ -1,9 +1,9 @@
 from flask import jsonify
 from main import app
-from business.routes import business,db
-from products.routes import products,db
-from users.routes import users,db
-from orders.routes import orders,db
+from business.routes import business
+from products.routes import products
+from users.routes import users
+from orders.routes import orders
 
 app.register_blueprint(blueprint=products)
 app.register_blueprint(blueprint=business)
@@ -16,5 +16,4 @@ def healthCheck():
     return jsonify(message="application running successfully !")
 
 if __name__=="__main__":
-    db.create_all()
     app.run(debug=True)
