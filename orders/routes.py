@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify,request
+from flask_jwt_extended import jwt_required
 
 from orders.services import createNewOrder
 from .models import *
@@ -39,3 +40,28 @@ def createOrder():
         return jsonify(message="order created successfuly",data=order),201
     except Exception as e:
         return jsonify(message="failed to create new order",error=str(e)),406
+
+@orders.put('/<id>')
+@jwt_required()
+def completeOrder(id):
+    order:Order=Order.query.filter_by(id=id).first()
+    if order==None:
+        return jsonify(message="order not found"),404
+    if order.complete:
+        order.complete=False
+    else:
+        order.complete=True
+    db.session.commit()
+    
+    return jsonify(message="updated order succesfuly",data=order),200
+
+@orders.delete('/<id>')
+@jwt_required()
+def deleteOrder(id):
+    order:Order=Order.query.filter_by(id=id).first()
+    if order==None:
+        return jsonify(message="order not found"),404
+    db.session.delete(order)
+    db.session.commit()
+    
+    return jsonify(message="deleted order succesfuly"),200
