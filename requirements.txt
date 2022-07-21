@@ -6,3 +6,6 @@ psycopg2-binary
 shortuuid
 flask_jwt_extended
 sqlalchemy
+flask_cors
+marshmallow_sqlalchemy
+requests

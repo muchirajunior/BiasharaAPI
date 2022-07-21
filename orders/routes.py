@@ -7,6 +7,7 @@ from  schemas import *
 orders=Blueprint('orders',__name__,url_prefix='/orders')
 
 @orders.get('/')
+@jwt_required()
 def getAllOrders():
     try:
         orders=Order.query.all()
@@ -17,6 +18,7 @@ def getAllOrders():
         return jsonify(message="error fetching data", error=str(e))
 
 @orders.get('/<id>')
+@jwt_required()
 def getOrderById(id):
     try:
         order=Order.query.filter_by(id=id).first()
