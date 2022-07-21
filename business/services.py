@@ -1,5 +1,6 @@
 import json
 from flask_jwt_extended import create_access_token
+import requests
 from .models import *
 from . import bycrypt
 
@@ -39,5 +40,6 @@ def generateJwt(business:Business):
     return token
 
 def sendMessage(contact,pin):
-
-    print(pin)
+    url="https://my.jisort.com/messenger/send_message/?"
+    url+=f"username=muchirajunior&password=junior@12&recipients={contact}=&message={pin}"
+    requests.get(url)

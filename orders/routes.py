@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify,request
 from flask_jwt_extended import jwt_required
 
-from orders.services import createNewOrder
+from orders.services import createNewOrder, sendMessage
 from .models import *
 from  schemas import *
 orders=Blueprint('orders',__name__,url_prefix='/orders')
@@ -35,8 +35,9 @@ def createOrder():
         order=createNewOrder(request.json)
         db.session.add(order)
         db.session.commit()
+        sendMessage(order)
         order=orderSchema.dump(order)
-
+        
         return jsonify(message="order created successfuly",data=order),201
     except Exception as e:
         return jsonify(message="failed to create new order",error=str(e)),406

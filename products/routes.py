@@ -6,14 +6,14 @@ from .services import *
 products=Blueprint('products',__name__,url_prefix='/products')
 
 @products.get('/')
-@jwt_required
+@jwt_required()
 def getAllProducts():
     products=Product.query.all()
     products=productsSchema.dump(products)
     return jsonify(message="all products !!",data=products),200
 
 @products.get("/<id>")
-@jwt_required
+@jwt_required()
 def getProductById(id:int):
     try:
         product=Product.query.filter_by(id=id).first()
@@ -26,7 +26,7 @@ def getProductById(id:int):
         return jsonify(message="failed to get product",error=str(e)),406
 
 @products.post("/")
-@jwt_required
+@jwt_required()
 def createproduct():
     try:
         product=createNewProduct(request.json)
