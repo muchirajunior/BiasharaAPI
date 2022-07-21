@@ -9,7 +9,7 @@ from flask_cors import CORS
 
 app=Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///database.db"
+app.config['SQLALCHEMY_DATABASE_URI']="postgresql://biahara:1234@localhost:5432/biashara"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.config['SECRET_KEY']="Hbfj@hy**^HGEERI56B3aa;7y(gertY64H55!"
 app.config["JWT_SECRET_KEY"] = "FJVDJH93623FDNJHGS537KDGN6@#$%JJ"

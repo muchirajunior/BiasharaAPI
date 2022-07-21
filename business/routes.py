@@ -33,6 +33,7 @@ def createBusiness():
         business:Business=createNewBusiness(request.json)
         db.session.add(business)
         db.session.commit()
+        business=businessSchema.dump(business)
         return jsonify(message="business created successfuly", data=business),201
     except Exception as e:
         return jsonify(message="failed to create business", error=str(e.args)),406

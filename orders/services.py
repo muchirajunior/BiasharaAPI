@@ -23,7 +23,7 @@ def sendMessage(order:Order):
         for item in order.products['products']:
             products+=item+", "
 
-        message=f"Hello {business.name} a new order by {order.client} with {products} from {order.address} total price ksh {order.total_price}. Thank You. "
+        message=f"Hello {business.name} a new order by {order.client} for {products} from {order.address} with contact {order.contact} and  total price ksh {order.total_price}. Thank You. "
         url="https://my.jisort.com/messenger/send_message/?"
         url+=f"username=muchirajunior&password=junior@12&recipients={business.phone}=&message={message}"
         requests.get(url)
