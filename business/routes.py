@@ -107,7 +107,7 @@ def updateBusiness(id):
         business.pdf_menu=request.json['pdf_menu']
         db.session.commit()
 
-        return jsonify(message="updated business profile successfuly",data=business),200
+        return jsonify(message="updated business profile successfuly",data=businessSchema.dump(business)),200
     except Exception as e:
         return jsonify(message="failed to update",error=str(e.args)),406
 
